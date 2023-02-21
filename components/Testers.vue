@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { testers } from "../lib/testers";
+const { testers } = useTesters();
 </script>
 
 <template>
