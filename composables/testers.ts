@@ -24,7 +24,6 @@ export const useTesters = () => {
         fetchTesters(data.offset);
       }
 
-      // testers.data = data.records;
       testers.data.push(...data.records);
     } catch (error) {
       console.error(error);
@@ -33,5 +32,9 @@ export const useTesters = () => {
     }
   }
 
-  return { fetchTesters, testers };
+  const sections = computed(() =>
+    [...new Set(testers.data.flatMap((t) => t.fields.sectionName))].sort(),
+  );
+
+  return { fetchTesters, testers, sections };
 };

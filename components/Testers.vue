@@ -1,28 +1,41 @@
 <script setup lang="ts">
-const { testers } = useTesters();
+const { testers, sections } = useTesters();
 </script>
 
 <template>
   <p v-if="!testers.data.length">There are currently no active vendors.</p>
 
-  <!-- <pre>{{ testers }}</pre> -->
+  <!-- <pre>{{ sorted }}</pre> -->
 
-  <div v-else class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Company Name</th>
-          <th>Phone Number</th>
-        </tr>
-      </thead>
+  <details v-else v-for="section in sections" :key="section" open>
+    <summary>
+      {{ section }}
+    </summary>
 
-      <tbody>
-        <tr v-for="(tester, i) in testers.data" :key="i">
-          <td>{{ tester.fields.companyName }}</td>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Company Name</th>
+            <th>Phone Number</th>
+          </tr>
+        </thead>
 
-          <td>{{ tester.fields.phoneNumber }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+        <tbody>
+          <tr
+            v-for="tester in testers.data.filter(
+              (v) => v.fields.sectionName[0] === section && v.fields.publish,
+            )"
+            :key="tester.id"
+          >
+            <td>{{ tester.fields.companyName }}</td>
+
+            <td style="white-space: nowrap; text-align: right">
+              {{ tester.fields.phoneNumber }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
 </template>

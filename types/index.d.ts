@@ -3,6 +3,7 @@ interface Tester {
   fields: {
     companyName: string;
     phoneNumber: string;
-    publish: Date;
+    publish: boolean;
+    sectionName: string[];
   };
 }
