@@ -5,8 +5,6 @@ const { testers, sections } = useTesters();
 <template>
   <p v-if="!testers.data.length">There are currently no active vendors.</p>
 
-  <!-- <pre>{{ sorted }}</pre> -->
-
   <details v-else v-for="section in sections" :key="section" open>
     <summary>
       {{ section }}
@@ -17,14 +15,14 @@ const { testers, sections } = useTesters();
         <thead>
           <tr>
             <th>Company Name</th>
-            <th>Phone Number</th>
+            <th style="white-space: nowrap; text-align: right">Phone Number</th>
           </tr>
         </thead>
 
         <tbody>
           <tr
             v-for="tester in testers.data.filter(
-              (v) => v.fields.sectionName[0] === section && v.fields.publish,
+              (v) => v.fields.sectionName === section && v.fields.publish,
             )"
             :key="tester.id"
           >

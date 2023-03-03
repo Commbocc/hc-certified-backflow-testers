@@ -4,6 +4,6 @@ interface Tester {
     companyName: string;
     phoneNumber: string;
     publish: boolean;
-    sectionName: string[];
+    sectionName: string;
   };
 }
