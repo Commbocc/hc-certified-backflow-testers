@@ -5,4 +5,6 @@ export default defineNuxtConfig({
   app: {
     baseURL: "/hc-certified-backflow-testers/",
   },
+
+  plugins: [{ src: "~/plugins/iframe-resize", mode: "client" }],
 });
