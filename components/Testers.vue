@@ -10,32 +10,28 @@ const { testers, sections } = useTesters();
       {{ section }}
     </summary>
 
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Company Name</th>
-            <th style="white-space: nowrap; text-align: right">Phone Number</th>
-          </tr>
-        </thead>
+    <template
+      v-for="tester in testers.data.filter(
+        (v) => v.fields.sectionName === section && v.fields.publish,
+      )"
+      :key="tester.id"
+    >
+      <div class="grid">
+        <div>
+          <strong>{{ tester.fields.companyName }}</strong>
+        </div>
 
-        <tbody>
-          <tr
-            v-for="tester in testers.data.filter(
-              (v) => v.fields.sectionName === section && v.fields.publish,
-            )"
-            :key="tester.id"
+        <div>
+          <a :href="`tel:${tester.fields.phoneNumber}`">{{
+            tester.fields.phoneNumber
+          }}</a>
+
+          <span v-if="tester.fields.extension"
+            >&nbsp;Ext. {{ tester.fields.extension }}</span
           >
-            <td>{{ tester.fields.companyName }}</td>
-
-            <td style="white-space: nowrap; text-align: right">
-              <a :href="`tel:${tester.fields.phoneNumber}`">{{
-                tester.fields.phoneNumber
-              }}</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+        </div>
+      </div>
+      <hr />
+    </template>
   </details>
 </template>

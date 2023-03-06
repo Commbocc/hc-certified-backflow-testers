@@ -5,5 +5,6 @@ interface Tester {
     phoneNumber: string;
     publish: boolean;
     sectionName: string;
+    extension: string;
   };
 }
