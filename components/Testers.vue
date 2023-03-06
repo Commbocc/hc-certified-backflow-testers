@@ -29,7 +29,9 @@ const { testers, sections } = useTesters();
             <td>{{ tester.fields.companyName }}</td>
 
             <td style="white-space: nowrap; text-align: right">
-              {{ tester.fields.phoneNumber }}
+              <a :href="`tel:${tester.fields.phoneNumber}`">{{
+                tester.fields.phoneNumber
+              }}</a>
             </td>
           </tr>
         </tbody>

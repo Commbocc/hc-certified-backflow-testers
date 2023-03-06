@@ -1,9 +1,3 @@
-import iframeResize from "iframe-resizer";
+import "iframe-resizer/js/iframeResizer.contentWindow";
 
-export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.directive("resize", {
-    mounted(el, { value = {} }) {
-      el.addEventListener("load", () => iframeResize(value, el));
-    },
-  });
-});
+export default defineNuxtPlugin(() => {});
