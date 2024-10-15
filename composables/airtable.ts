@@ -5,7 +5,7 @@ const TABLE_ID = `appY3R5HBiFPVfK5n`;
 export const useAirtable = () => {
   const client = axios.create({
     baseURL: import.meta.env.PROD
-      ? `https://hc-caching-proxy.herokuapp.com/airtable/${TABLE_ID}`
+      ? `https://hc-airtable-caching-proxy.netlify.app/api/v1/airtable/${TABLE_ID}`
       : `https://api.airtable.com/v0/${TABLE_ID}`,
     headers: import.meta.env.DEV
       ? {
